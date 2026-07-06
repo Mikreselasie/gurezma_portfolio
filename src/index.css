@@ -1,0 +1,106 @@
+/* =============================================
+   GUREZMA STUDIO — GLOBAL STYLES
+   ============================================= */
+
+:root {
+  --black:       #000000;
+  --black-soft:  #080808;
+  --black-mid:   #0d0d0d;
+  --white:       #FFFEFF;
+  --white-dim:   rgba(255,254,255,.6);
+  --white-faint: rgba(255,254,255,.08);
+  --blue:        #0E54FF;
+  --blue-dim:    rgba(14,84,255,.15);
+  --blue-glow:   rgba(14,84,255,.3);
+  --orange:      #FF7A2A;
+  --orange-dim:  rgba(255,122,42,.15);
+  --orange-glow: rgba(255,122,42,.3);
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-ui:      'Space Grotesk', sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.3s var(--ease-expo);
+  --max-width: 1200px;
+  --section-pad: clamp(80px, 10vw, 130px);
+}
+
+/* ---- RESET ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  cursor: none;
+}
+@media (max-width: 768px) { body { cursor: auto; } }
+img { display: block; width: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: none; border: none; background: none; }
+@media (max-width: 768px) { button { cursor: pointer; } }
+
+/* ---- CONTAINER ---- */
+.container {
+  width: min(var(--max-width), 92vw);
+  margin: 0 auto;
+}
+
+/* ---- SECTION LABEL ---- */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-bottom: 20px;
+}
+.section-label span { color: var(--orange); font-size: .65rem; }
+
+/* ---- SECTION TITLE ---- */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: .02em;
+  margin-bottom: 48px;
+}
+
+/* ---- MARQUEE ---- */
+.marquee-inner {
+  display: flex;
+  gap: 24px;
+  animation: marquee 38s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover .marquee-inner { animation-play-state: paused; }
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* ---- SELECTION ---- */
+::selection { background: var(--blue); color: var(--white); }
+
+/* ---- REDUCED MOTION ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
