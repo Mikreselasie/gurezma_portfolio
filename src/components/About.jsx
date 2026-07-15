@@ -27,7 +27,7 @@ export default function About() {
         </motion.div>
 
         {/* Two-column */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center', marginBottom: 80 }}>
+        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center', marginBottom: 80 }}>
 
           {/* Text column */}
           <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={VIEWPORT}>

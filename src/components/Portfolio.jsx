@@ -8,7 +8,7 @@ const filters = ['all', 'video', 'motion', 'design']
 const projects = [
   { id: 1, cat: 'video',  title: 'Brand Commercial',        tag: 'Video Editing',   desc: 'Cinematic brand film for luxury product launch. Color-graded and scored.', youtubeId: 'BHH_0E9ikHY', img: 'https://img.youtube.com/vi/BHH_0E9ikHY/maxresdefault.jpg' },
   { id: 2, cat: 'motion', title: 'Kinetic Title Sequence',  tag: 'Motion Graphics', desc: 'Opening title sequence with 3D type, particle systems & sound design sync.', img: '/assets/project_02.png' },
-  { id: 3, cat: 'design', title: 'Brand Identity',          tag: 'Graphic Design',  desc: 'Full visual identity — logo, typography, color system, brand guidelines.', img: '/assets/Mockup 10.png' },
+  { id: 3, cat: 'design', title: 'Brand Identity',          tag: 'Graphic Design',  desc: 'Full visual identity — logo, typography, color system, brand guidelines.', img: '/assets/Branding-Gibi.png' },
   { id: 4, cat: 'video',  title: 'Social Media Reel',       tag: 'Video Editing',   desc: 'High-energy social reel for a fashion brand — fast cuts, bold captions, viral format.', instaId: 'DZpzyDio9zk', grad: 'linear-gradient(135deg,#0d0d0d 0%,#833ab4 50%,#fd1d1d 100%)', gradLabel: 'INSTAGRAM REEL' },
   { id: 5, cat: 'motion', title: 'Explainer Animation',     tag: 'Motion Graphics', desc: '30 second animated explainer for a SaaS product , UI mockups.', youtubeId: 'OiJyEDjO5ZA', img: 'https://img.youtube.com/vi/OiJyEDjO5ZA/maxresdefault.jpg' },
   { id: 6, cat: 'design', title: 'Documentary Poster Series',tag: 'Graphic Design', desc: 'Poster Design for graphics design and video editing Tutorial', img: '/assets/Poster GG.png' },
@@ -68,7 +68,7 @@ export default function Portfolio() {
         </motion.div>
 
         {/* Grid */}
-        <motion.div layout style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+        <motion.div layout className="portfolio-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
           <AnimatePresence mode="popLayout">
             {visible.map(p => (
               <motion.article
@@ -212,8 +212,8 @@ export default function Portfolio() {
       </AnimatePresence>
 
       <style>{`
-        @media(max-width:900px) { #work .container > div:last-child { grid-template-columns: repeat(2,1fr) !important; } }
-        @media(max-width:600px) { #work .container > div:last-child { grid-template-columns: 1fr !important; } }
+        @media(max-width:900px) { #work .portfolio-grid { grid-template-columns: repeat(2,1fr) !important; } }
+        @media(max-width:600px) { #work .portfolio-grid { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
   )

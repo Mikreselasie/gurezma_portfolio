@@ -139,11 +139,12 @@ export default function Hero() {
           border: '1px solid rgba(255,254,255,.09)', borderRadius: 50,
           padding: '16px 0', whiteSpace: 'nowrap', zIndex: 2,
         }}
+        className="stat-row"
       >
         <StatItem target={50} suffix="+" label="Projects Delivered" />
-        <div style={{ width: 1, height: 36, background: 'rgba(255,254,255,.12)' }} />
+        <div className="stat-divider" style={{ width: 1, height: 36, background: 'rgba(255,254,255,.12)' }} />
         <StatItem target={8} suffix="+" label="Happy Clients" />
-        <div style={{ width: 1, height: 36, background: 'rgba(255,254,255,.12)' }} />
+        <div className="stat-divider" style={{ width: 1, height: 36, background: 'rgba(255,254,255,.12)' }} />
         <StatItem target={1.5} suffix="" label="Years of Craft" />
       </motion.div>
 
@@ -168,6 +169,7 @@ export default function Hero() {
         @keyframes scrollBounce { 0%,100%{transform:rotate(45deg) translateY(0);opacity:1} 50%{transform:rotate(45deg) translateY(5px);opacity:.4} }
         @media(max-width:600px){
           #hero .stat-row { flex-direction:column; gap:8px; border-radius:16px; padding:20px 24px; }
+          #hero .stat-divider { display:none; }
         }
       `}</style>
     </section>

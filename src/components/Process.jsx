@@ -68,7 +68,7 @@ export default function Process() {
 
         <div style={{ position: 'relative', paddingTop: 20 }}>
           {/* Connecting SVG line */}
-          <div style={{ position: 'absolute', top: 68, left: '12.5%', right: '12.5%', height: 3, pointerEvents: 'none' }}>
+          <div className="proc-line" style={{ position: 'absolute', top: 68, left: '12.5%', right: '12.5%', height: 3, pointerEvents: 'none' }}>
             <svg width="100%" height="4" viewBox="0 0 900 4" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
               <motion.line
                 x1="0" y1="2" x2="900" y2="2"
@@ -94,6 +94,7 @@ export default function Process() {
             variants={stagger(.14)}
             initial="hidden" whileInView="visible" viewport={VIEWPORT}
             style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 40 }}
+            className="proc-grid"
           >
             {steps.map(s => (
               <motion.div
