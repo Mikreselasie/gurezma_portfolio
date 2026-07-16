@@ -31,7 +31,7 @@ export default function Navbar() {
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 900,
-        width: scrolled ? 'min(820px, calc(100vw - 32px))' : 'min(960px, calc(100vw - 48px))',
+        width: scrolled ? 'min(820px, calc(100% - 32px))' : 'min(960px, calc(100% - 48px))',
         transition: 'top 0.45s cubic-bezier(0.16,1,0.3,1), width 0.45s cubic-bezier(0.16,1,0.3,1)',
         pointerEvents: 'none',
       }}>

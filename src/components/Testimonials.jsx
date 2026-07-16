@@ -2,8 +2,8 @@ import { motion } from 'framer-motion'
 import { fadeUp, fadeLeft, VIEWPORT } from '../utils/animations'
 
 const testimonials = [
-  { quote: "Gurezma Studio transformed our brand launch video into something truly cinematic. The final edit blew away our entire team — and our clients.", author: "Sara Malik", role: "CEO, Orbit Digital", initial: "S", grad: "135deg,#0E54FF,#FF7A2A" },
-  { quote: "The motion graphics package they delivered for our product launch exceeded every benchmark. Engagement went up 300% week one.", author: "James Okafor", role: "Head of Marketing, NovaTech", initial: "J", grad: "135deg,#FF7A2A,#000A4F" },
+  { quote: "MikreSilassie is an exceptional video editor who consistently delivers high-quality work. He has a fantastic eye for pacing, clean transitions, and narrative flow, turning raw footage into polished, highly engaging content. Beyond his technical skills, his communication is excellent—he takes feedback incredibly well, understands the creative vision instantly, and always hits his deadlines. If you are looking for an editor who is reliable, highly skilled, and easy to work with, I highly recommend MikreSilassie. I’ll definitely be working with him on future projects!", author: "Nahon Biruk", role: "host, Cyber Guardians", initial: "S", grad: "135deg,#0E54FF,#FF7A2A", logo: "/assets/Client Logos/Cyyber Guardians.png" },
+  { quote: "I have had the pleasure of working with Mikreselasie as a video editor, and he has consistently exceeded my expectations. He is creative, detail-oriented, and always delivers high-quality work that aligns with the vision of the project. One of the qualities I appreciate most about Mikreselasie is his reliability. He communicates well, meets deadlines, and is always open to feedback, making revisions quickly and professionally. His ability to maintain a strong visual flow, and produce engaging content has added tremendous value to my contents. I highly recommend Mikreselasie to anyone looking for a skilled and dependable video editor. He is passionate about his craft, easy to work with, and committed to delivering excellent results.", author: "Biruktawit", role: "CEO, Productive Habesha", initial: "J", grad: "135deg,#FF7A2A,#000A4F", logo: "/assets/Client Logos/Productive Habesha.jpg" },
   { quote: "Our rebrand needed to feel bold yet refined. Gurezma nailed it — every touchpoint from logo to social kit was perfect on the first draft.", author: "Layla Hassan", role: "Founder, Bloom Creative", initial: "L", grad: "135deg,#0E54FF,#9999FF" },
   { quote: "I've worked with editors around the world. Gurezma Studio's pacing, color work, and attention to storytelling is genuinely world-class.", author: "Karim Nasser", role: "Director, Frameshift Films", initial: "K", grad: "135deg,#FF7A2A,#0E54FF" },
   { quote: "Fast, responsive, and incredibly talented. They delivered a full social media motion package in 5 days. Unbelievable quality and speed.", author: "Amira Yildiz", role: "Brand Lead, Pulse Agency", initial: "A", grad: "135deg,#000A4F,#0E54FF" },
@@ -18,7 +18,11 @@ function TestimonialCard({ t }) {
       <span style={{ display: 'block', fontFamily: 'Georgia,serif', fontSize: '3.5rem', lineHeight: .7, color: '#FF7A2A', opacity: .7, marginBottom: 12 }}>"</span>
       <p style={{ fontSize: '.9rem', lineHeight: 1.75, color: 'rgba(255,254,255,.6)', marginBottom: 20 }}>{t.quote}</p>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{ width: 40, height: 40, borderRadius: '50%', background: `linear-gradient(${t.grad})`, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-display)', fontSize: '1.1rem', flexShrink: 0 }}>{t.initial}</div>
+        {t.logo ? (
+          <img src={t.logo} alt={t.author} style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
+        ) : (
+          <div style={{ width: 40, height: 40, borderRadius: '50%', background: `linear-gradient(${t.grad})`, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-display)', fontSize: '1.1rem', flexShrink: 0 }}>{t.initial}</div>
+        )}
         <div>
           <strong style={{ display: 'block', fontFamily: 'var(--font-ui)', fontSize: '.88rem', fontWeight: 600 }}>{t.author}</strong>
           <span style={{ fontSize: '.78rem', color: 'rgba(255,254,255,.45)' }}>{t.role}</span>

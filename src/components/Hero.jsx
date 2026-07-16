@@ -168,7 +168,7 @@ export default function Hero() {
         @keyframes pulseDot  { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
         @keyframes scrollBounce { 0%,100%{transform:rotate(45deg) translateY(0);opacity:1} 50%{transform:rotate(45deg) translateY(5px);opacity:.4} }
         @media(max-width:600px){
-          #hero .stat-row { flex-direction:column; gap:8px; border-radius:16px; padding:20px 24px; }
+          #hero .stat-row { position: relative !important; bottom: auto !important; left: auto !important; transform: none !important; margin-top: 48px; flex-direction:column; gap:8px; border-radius:16px; padding:20px 24px; }
           #hero .stat-divider { display:none; }
         }
       `}</style>
