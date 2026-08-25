@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials'
 import Services from './components/Services'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { Assistant } from './components/Assistant'
 
 function App() {
   // Smooth scroll behavior
@@ -49,6 +50,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <Assistant />
     </>
   )
 }

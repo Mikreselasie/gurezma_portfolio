@@ -6,7 +6,7 @@ const services = [
     title: 'Video Editing',
     desc: 'From raw footage to polished film. Brand commercials, social reels, documentaries, event recaps, and music videos.',
     list: ['Color Grading & LUT Design', 'Sound Design & Mixing', 'Multi-format Export'],
-    price: '$299',
+    price: '$49',
     icon: (
       <svg viewBox="0 0 52 52" width={48} height={48} fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Film strip body */}
@@ -32,7 +32,7 @@ const services = [
     title: 'Motion Graphics',
     desc: 'Logo animations, title sequences, lower thirds, explainer videos, and full brand motion packages.',
     list: ['Logo & Brand Animation', 'Explainer Videos', 'Social Motion Kits'],
-    price: '$499',
+    price: '$79',
     icon: (
       <svg viewBox="0 0 52 52" width={48} height={48} fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Orbit ring */}
@@ -53,7 +53,7 @@ const services = [
     title: 'Graphic Design',
     desc: 'Visual identities, logo systems, print materials, social media kits, and UI design.',
     list: ['Brand Identity & Logo', 'Social Media Templates', 'Print & Digital'],
-    price: '$249',
+    price: '$29',
     icon: (
       <svg viewBox="0 0 52 52" width={48} height={48} fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Pen nib body */}
@@ -73,7 +73,7 @@ const services = [
     title: 'Full Brand Package',
     desc: 'The complete creative stack — identity design, brand film, motion graphics, and social media kit.',
     list: ['Everything in all 3 services', 'Brand Film (2–3 min)', 'Strategy & Direction'],
-    price: '$1,499',
+    price: '$99',
     featured: true,
     icon: (
       <svg viewBox="0 0 52 52" width={48} height={48} fill="none" xmlns="http://www.w3.org/2000/svg">

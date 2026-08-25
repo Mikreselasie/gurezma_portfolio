@@ -6,12 +6,14 @@ import { X } from 'lucide-react'
 const filters = ['all', 'video', 'motion', 'design']
 
 const projects = [
-  { id: 1, cat: 'video',  title: 'Brand Commercial',        tag: 'Video Editing',   desc: 'Cinematic brand film for luxury product launch. Color-graded and scored.', youtubeId: 'BHH_0E9ikHY', img: 'https://img.youtube.com/vi/BHH_0E9ikHY/maxresdefault.jpg' },
-  { id: 2, cat: 'motion', title: 'Kinetic Title Sequence',  tag: 'Motion Graphics', desc: 'Opening title sequence with 3D type, particle systems & sound design sync.', img: '/assets/project_02.png' },
+  { id: 1, cat: 'video',  title: 'Brand Commercial',        tag: 'Video Editing',   desc: 'YouTube Financial Advice Video.', youtubeId: 'BHH_0E9ikHY', img: 'https://img.youtube.com/vi/BHH_0E9ikHY/maxresdefault.jpg' },
+  { id: 8, cat: 'video', title: 'Voxide AI — Product Launch', tag: 'Video Editing', desc: 'Product launch video for Voxide AI — SaaS product launch.', youtubeId: 'gc0b-zi2JUk', img: 'https://img.youtube.com/vi/gc0b-zi2JUk/maxresdefault.jpg' },
+  { id: 9, cat: 'video', title: 'Talkhead video (Competition)', tag: 'Video Editing', desc: 'Instagram Reel (before and after)', instaId: 'DcIngigTxcW' },
   { id: 3, cat: 'design', title: 'Brand Identity',          tag: 'Graphic Design',  desc: 'Full visual identity — logo, typography, color system, brand guidelines.', img: '/assets/Branding-Gibi.png' },
   { id: 4, cat: 'video',  title: 'Social Media Reel',       tag: 'Video Editing',   desc: 'High-energy social reel for a fashion brand — fast cuts, bold captions, viral format.', instaId: 'DZpzyDio9zk', grad: 'linear-gradient(135deg,#0d0d0d 0%,#833ab4 50%,#fd1d1d 100%)', gradLabel: 'INSTAGRAM REEL' },
   { id: 5, cat: 'motion', title: 'Explainer Animation',     tag: 'Motion Graphics', desc: '30 second animated explainer for a SaaS product , UI mockups.', youtubeId: 'OiJyEDjO5ZA', img: 'https://img.youtube.com/vi/OiJyEDjO5ZA/maxresdefault.jpg' },
   { id: 6, cat: 'design', title: 'Documentary Poster Series',tag: 'Graphic Design', desc: 'Poster Design for graphics design and video editing Tutorial', img: '/assets/Poster GG.png' },
+  { id: 7, cat: 'video', title: 'Featured YouTube Video', tag: 'Video Editing', desc: 'Finance youtube video for a client', youtubeId: 'FSvvo2gz_7o', img: 'https://img.youtube.com/vi/FSvvo2gz_7o/maxresdefault.jpg' },
 ]
 
 const tagColor = { 'Video Editing': '#0E54FF', 'Motion Graphics': '#FF7A2A', 'Graphic Design': '#0E54FF' }
@@ -19,6 +21,7 @@ const tagColor = { 'Video Editing': '#0E54FF', 'Motion Graphics': '#FF7A2A', 'Gr
 export default function Portfolio() {
   const [active, setActive] = useState('all')
   const [selectedProject, setSelectedProject] = useState(null)
+  const [instaThumbs, setInstaThumbs] = useState({})
   
   const visible = active === 'all' ? projects : projects.filter(p => p.cat === active)
 
@@ -30,7 +33,43 @@ export default function Portfolio() {
       document.body.style.overflow = ''
     }
     return () => document.body.style.overflow = ''
-  }, [selectedProject])
+  }, [selectedProject]);
+
+  // Listen for voxide external filter events
+  useEffect(() => {
+    const handleFilter = (e) => {
+      const cat = e.detail?.category;
+      if (filters.includes(cat)) {
+        setActive(cat);
+      }
+    };
+    window.addEventListener('voxide:filter-portfolio', handleFilter);
+    return () => window.removeEventListener('voxide:filter-portfolio', handleFilter);
+  }, []);
+
+  // Attempt to fetch Instagram oEmbed thumbnails for projects that have an instaId but no img
+  useEffect(() => {
+    const fetchThumb = async (id) => {
+      try {
+        const url = `https://api.instagram.com/oembed/?url=https://www.instagram.com/reel/${id}/`;
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && data.thumbnail_url) {
+          setInstaThumbs(prev => ({ ...prev, [id]: data.thumbnail_url }));
+        }
+      } catch (e) {
+        // ignore failures (CORS or rate limits) — thumbnails may still be provided server-side later
+      }
+    }
+
+    projects.forEach(p => {
+      if (p.instaId && !p.img && !instaThumbs[p.instaId]) {
+        fetchThumb(p.instaId);
+      }
+    })
+  }, [instaThumbs])
+
 
   return (
     <section id="work" style={{ padding: 'var(--section-pad) 0', background: '#000' }}>
@@ -70,7 +109,9 @@ export default function Portfolio() {
         {/* Grid */}
         <motion.div layout className="portfolio-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
           <AnimatePresence mode="popLayout">
-            {visible.map(p => (
+            {visible.map(p => {
+              const imgSrc = p.img || (p.instaId ? instaThumbs[p.instaId] : null)
+              return (
               <motion.article
                 key={p.id}
                 layout
@@ -85,9 +126,9 @@ export default function Portfolio() {
               >
                 {/* Thumbnail */}
                 <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
-                  {p.img ? (
+                  {imgSrc ? (
                     <motion.img
-                      src={p.img} alt={p.title}
+                      src={imgSrc} alt={p.title}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       whileHover={{ scale: 1.08 }}
                       transition={{ duration: .6 }}
@@ -120,7 +161,7 @@ export default function Portfolio() {
                   <p style={{ fontSize: '.85rem', color: 'rgba(255,254,255,.55)', lineHeight: 1.6 }}>{p.desc}</p>
                 </div>
               </motion.article>
-            ))}
+            )})}
           </AnimatePresence>
         </motion.div>
       </div>
@@ -189,15 +230,19 @@ export default function Portfolio() {
                       style={{ background: '#fff' }}
                     ></iframe>
                   </div>
-                ) : selectedProject.img ? (
-                  <div style={{ width: '100%', maxHeight: '70vh', display: 'flex', justifyContent: 'center' }}>
-                    <img src={selectedProject.img} alt={selectedProject.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-                  </div>
-                ) : (
-                  <div style={{ width: '100%', aspectRatio: '16/9', background: selectedProject.grad, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', letterSpacing: '.2em', color: 'rgba(255,254,255,.12)' }}>{selectedProject.gradLabel}</span>
-                  </div>
-                )}
+                ) : (() => {
+                  const selectedImg = selectedProject.img || (selectedProject.instaId ? instaThumbs[selectedProject.instaId] : null)
+                  return selectedImg ? (
+                    <div style={{ width: '100%', maxHeight: '70vh', display: 'flex', justifyContent: 'center' }}>
+                      <img src={selectedImg} alt={selectedProject.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    </div>
+                  ) : (
+                    <div style={{ width: '100%', aspectRatio: '16/9', background: selectedProject.grad, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', letterSpacing: '.2em', color: 'rgba(255,254,255,.12)' }}>{selectedProject.gradLabel}</span>
+                    </div>
+                  )
+                })()
+                }
               </div>
 
               {/* Modal Info Section */}
