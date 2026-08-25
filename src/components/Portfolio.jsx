@@ -8,9 +8,9 @@ const filters = ['all', 'video', 'motion', 'design']
 const projects = [
   { id: 1, cat: 'video',  title: 'Brand Commercial',        tag: 'Video Editing',   desc: 'YouTube Financial Advice Video.', youtubeId: 'BHH_0E9ikHY', img: 'https://img.youtube.com/vi/BHH_0E9ikHY/maxresdefault.jpg' },
   { id: 8, cat: 'video', title: 'Voxide AI — Product Launch', tag: 'Video Editing', desc: 'Product launch video for Voxide AI — SaaS product launch.', youtubeId: 'gc0b-zi2JUk', img: 'https://img.youtube.com/vi/gc0b-zi2JUk/maxresdefault.jpg' },
-  { id: 9, cat: 'video', title: 'Talkhead video (Competition)', tag: 'Video Editing', desc: 'Instagram Reel (before and after)', instaId: 'DcIngigTxcW' },
+  { id: 9, cat: 'video', title: 'Talkhead video (Competition)', tag: 'Video Editing', desc: 'Instagram Reel (before and after)', instaId: 'DcIngigTxcW', grad: 'linear-gradient(135deg,#0d0d0d 0%,#833ab4 50%,#fd1d1d 100%)', gradLabel: 'INSTAGRAM REEL'},
   { id: 3, cat: 'design', title: 'Brand Identity',          tag: 'Graphic Design',  desc: 'Full visual identity — logo, typography, color system, brand guidelines.', img: '/assets/Branding-Gibi.png' },
-  { id: 4, cat: 'video',  title: 'Social Media Reel',       tag: 'Video Editing',   desc: 'High-energy social reel for a fashion brand — fast cuts, bold captions, viral format.', instaId: 'DZpzyDio9zk', grad: 'linear-gradient(135deg,#0d0d0d 0%,#833ab4 50%,#fd1d1d 100%)', gradLabel: 'INSTAGRAM REEL' },
+  { id: 4, cat: 'video',  title: 'Social Media Reel',       tag: 'Video Editing',   desc: 'Short form video for event organizer promotion.', instaId: 'DZpzyDio9zk', grad: 'linear-gradient(135deg,#0d0d0d 0%,#833ab4 50%,#fd1d1d 100%)', gradLabel: 'INSTAGRAM REEL' },
   { id: 5, cat: 'motion', title: 'Explainer Animation',     tag: 'Motion Graphics', desc: '30 second animated explainer for a SaaS product , UI mockups.', youtubeId: 'OiJyEDjO5ZA', img: 'https://img.youtube.com/vi/OiJyEDjO5ZA/maxresdefault.jpg' },
   { id: 6, cat: 'design', title: 'Documentary Poster Series',tag: 'Graphic Design', desc: 'Poster Design for graphics design and video editing Tutorial', img: '/assets/Poster GG.png' },
   { id: 7, cat: 'video', title: 'Featured YouTube Video', tag: 'Video Editing', desc: 'Finance youtube video for a client', youtubeId: 'FSvvo2gz_7o', img: 'https://img.youtube.com/vi/FSvvo2gz_7o/maxresdefault.jpg' },
