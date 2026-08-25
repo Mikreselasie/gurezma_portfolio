@@ -14,6 +14,7 @@ const projects = [
   { id: 5, cat: 'motion', title: 'Explainer Animation',     tag: 'Motion Graphics', desc: '30 second animated explainer for a SaaS product , UI mockups.', youtubeId: 'OiJyEDjO5ZA', img: 'https://img.youtube.com/vi/OiJyEDjO5ZA/maxresdefault.jpg' },
   { id: 6, cat: 'design', title: 'Documentary Poster Series',tag: 'Graphic Design', desc: 'Poster Design for graphics design and video editing Tutorial', img: '/assets/Poster GG.png' },
   { id: 7, cat: 'video', title: 'Featured YouTube Video', tag: 'Video Editing', desc: 'Finance youtube video for a client', youtubeId: 'FSvvo2gz_7o', img: 'https://img.youtube.com/vi/FSvvo2gz_7o/maxresdefault.jpg' },
+  { id: 10, cat: 'motion', title: 'ብፁዕ ብእሲ — Logo Animation', tag: 'Motion Graphics', desc: 'Logo animation for the ብፁዕ ብእሲ religious YouTube channel.', youtubeId: 'epvpuz4Ht8E', img: 'https://img.youtube.com/vi/epvpuz4Ht8E/maxresdefault.jpg' },
 ]
 
 const tagColor = { 'Video Editing': '#0E54FF', 'Motion Graphics': '#FF7A2A', 'Graphic Design': '#0E54FF' }
